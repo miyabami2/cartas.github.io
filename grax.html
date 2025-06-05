@@ -1,0 +1,161 @@
+<!DOCTYPE html> 
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Gracias por tu pedido</title>
+  <style>
+    body {
+      background-color: #fff0f5;
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      padding: 40px;
+      color: #800020;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 1.2em;
+    }
+
+    .detalle-pedido {
+      background-color: #ffe4ec;
+      border-radius: 15px;
+      padding: 20px;
+      margin: 30px auto;
+      max-width: 500px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    ul {
+      list-style-type: "💌 ";
+      padding-left: 20px;
+      text-align: left;
+    }
+
+    .boton-regresar {
+      display: inline-block;
+      margin-top: 30px;
+      background-color: #ff66a3;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 12px;
+      font-size: 16px;
+      text-decoration: none;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+
+    .boton-regresar:hover {
+      background-color: #e0558f;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+
+  <h1>¡Gracias por tu pedido! 🎉</h1>
+  <p>Hemos recibido tu solicitud. Aquí están los detalles:</p>
+
+<div id="ticket-container" style="margin-top: 40px;">
+  <div id="ticket" style="
+    max-width: 600px;
+    margin: auto;
+    padding: 30px;
+    background: #fff0f5;
+    border: 3px dashed #d6336c;
+    border-radius: 20px;
+    font-family: 'Georgia', serif;
+    color: #4a0033;
+    position: relative;
+    box-shadow: 0 0 25px rgba(214, 51, 108, 0.2);
+    background-image: url('https://www.transparenttextures.com/patterns/pink-paper.png');
+  ">
+    <div style="text-align: center;">
+      <h2 style="font-size: 28px; margin-bottom: 10px;">💌 Ticket de Pedido</h2>
+      <p style="font-style: italic; color: #a83a64;">"Gracias por compartir amor con tus palabras..."</p>
+    </div>
+
+    <hr style="border: none; border-top: 1px dashed #d6336c; margin: 20px 0;">
+
+    <p><strong>👤 Nombre del comprador:</strong> <span id="t-nombre"></span></p>
+    <p><strong>📅 Fecha del pedido:</strong> <span id="t-fecha"></span></p>
+    <p><strong>🎁 Para:</strong> <span id="t-para"></span></p>
+    <p><strong>💌 Cartas seleccionadas (<span id="t-cantidad"></span>):</strong></p>
+    <ul id="t-cartas" style="padding-left: 20px; list-style-type: '💖 '; line-height: 1.6;"></ul>
+
+    <p style="text-align: right; font-size: 18px; font-weight: bold; margin-top: 20px;">
+      Total a pagar: <span id="t-total"></span>
+    </p>
+
+    <hr style="border: none; border-top: 1px dashed #d6336c; margin: 20px 20px 0 20px;">
+    <p style="text-align: center; font-size: 14px; margin-top: 15px;">
+      ✨ Este ticket es válido como comprobante de amor ✨
+    </p>
+  </div>
+
+  <!-- Botón de imprimir -->
+  <button id="btn-pdf" style="
+    margin: 30px auto;
+    display: block;
+    background-color: #d6336c;
+    color: white;
+    padding: 12px 24px;
+    font-size: 16px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  "> Guardar como PDF</button>
+</div>
+
+
+  <a href="codigo.html" class="boton-regresar">⬅️ Regresar al inicio</a>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+  document.getElementById("btn-pdf").addEventListener("click", () => {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    // Datos del ticket
+    const nombre = localStorage.getItem("nombre") || "No disponible";
+    const correo = localStorage.getItem("correo") || "No disponible";
+    const destinatario = localStorage.getItem("destinatario") || "No disponible";
+    const total = localStorage.getItem("total") || "$0";
+    const cartas = JSON.parse(localStorage.getItem("cartas")) || [];
+
+    const fecha = new Date();
+    const opciones = { year: 'numeric', month: 'long', day: 'numeric' };
+    const fechaTexto = fecha.toLocaleDateString('es-ES', opciones);
+
+    // Encabezado
+    doc.setFontSize(16);
+    doc.text("🎀 Confirmación de Pedido - MOKANI", 20, 20);
+
+    doc.setFontSize(12);
+    doc.text(`📅 Fecha: ${fechaTexto}`, 20, 30);
+    doc.text(`👤 Nombre: ${nombre}`, 20, 40);
+    doc.text(`📨 Para: ${destinatario}`, 20, 50);
+    doc.text(`📧 Correo: ${correo}`, 20, 60);
+
+    // Cartas
+    doc.text("📝 Cartas seleccionadas:", 20, 75);
+    cartas.forEach((carta, i) => {
+      doc.text(`• ${carta}`, 25, 85 + i * 10);
+    });
+
+    // Total
+    doc.text(`💰 Total: ${total}`, 20, 95 + cartas.length * 10);
+
+    // Guardar
+    doc.save("Pedido_MOKANI.pdf");
+  });
+</script>
+</body>
+</html>
+

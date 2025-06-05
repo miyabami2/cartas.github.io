@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Realizar Pedido</title>
+  <style>
+    /* Estilos generales */
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #fff0f5; /* fondo rosa pastel */
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1, h2 {
+      text-align: center;
+      color: #d6336c;
+    }
+
+    form {
+      max-width: 800px;
+      margin: auto;
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+      font-weight: bold;
+      color: #333;
+    }
+
+    input[type="text"],
+    input[type="email"] {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0 20px 0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+
+    .cartas {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .carta-item {
+      background: #ffe4ec;
+      border-radius: 10px;
+      padding: 10px;
+      text-align: center;
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .carta-item img {
+      width: 100px;
+      height: auto;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
+    button {
+      background-color: #d6336c;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 16px;
+      display: block;
+      margin: 30px auto 0 auto;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #a72550;
+    }
+
+    .carta-item img {
+      transition: transform 0.3s ease;
+    }
+    
+    .carta-item img:hover {
+      transform: scale(2.0);
+      z-index: 10;
+      box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .boton-regresar {
+      display: block;
+      text-align: center;
+      margin: 30px auto 0 auto;
+      background-color: #ff66a3; /* rosado */
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: bold;
+      text-decoration: none;
+      width: fit-content;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+    
+    .boton-regresar:hover {
+      background-color: #e0558f;
+      transform: scale(1.05);
+    }
+
+    .carta-item input[type="checkbox"] {
+      display: block;
+      margin: 10px auto;
+      transform: scale(1.3); /* agranda un poco el checkbox */
+    }
+
+    #frase-motivacional {
+      transition: all 1.0s ease;
+      padding: 10px;
+      border-radius: 10px;
+    }
+
+    /* Animación de aparición/desaparición */
+    #frase-motivacional {
+      opacity: 0;
+      transition: opacity 1.5s ease;
+    }
+    
+    #frase-motivacional.visible {
+      opacity: 1;
+      transition: opacity 1.5s ease;
+    }
+    
+  </style>
+</head>
+
+<body>
+  <h1>Realizar Pedido de Cartas</h1>
+
+  <form action="https://formsubmit.co/mitsuhamiyabami@gmail.com" method="POST">
+  
+  <input type="hidden" name="_captcha" value="false">
+
+    
+<input type="hidden" name="_next" value="https://amreyna.github.io/Cartas-Sofia/grax.html">
+ 
+    <label>Nombre del comprador:</label>
+    <input type="text" name="Nombre del comprador" required>
+
+    <label>Correo del comprador:</label>
+    <input type="email" name="Correo del comprador" required>
+
+    <label>¿Para quién es la carta?:</label>
+    <input type="text" name="Destinatario de la carta" required>
+
+    <h2>Elige tus cartas</h2>
+
+    <div class="cartas">
+      <div id="frase-motivacional" style="text-align: center; font-size: 18px; font-weight: bold; margin-top: 30px; color: #d6336c;">
+        💌 Elige una carta para comenzar 💌
+      </div>
+      
+      <!-- Carta 1 -->
+      <div class="carta-item">
+        <img src="sofi1.jpeg" alt="Carta 1">
+        <input type="checkbox" name="Carta 1" value="Carta 1 - $100">
+        <p>"Encuentro de Estrellas" - $100</p>
+      </div>
+
+      <!-- Carta 2 -->
+      <div class="carta-item">
+        <img src="sofi2.jpeg" alt="Carta 2">
+        <input type="checkbox" name="Carta 2" value="Carta 2 - $120">
+        <p>"Jardin de Caricias" - $120</p>
+      </div>
+
+      <!-- Carta 3 -->
+      <div class="carta-item">
+        <img src="sofi3.jpeg" alt="Carta 3">
+        <input type="checkbox" name="Carta 3" value="Carta 3 - $110">
+        <p>"Suspiros de Amor" - $110</p>
+      </div>
+
+      <!-- Carta 4 -->
+      <div class="carta-item">
+        <img src="sofi4.jpeg" alt="Carta 4">
+        <input type="checkbox" name="Carta 4" value="Carta 4 - $90">
+        <p>"Amor Eterno" - $90</p>
+      </div>
+
+      <!-- Carta 5 -->
+      <div class="carta-item">
+        <img src="sofi5.jpeg" alt="Carta 5">
+        <input type="checkbox" name="Carta 5" value="Carta 5 - $130">
+        <p>"Jardin de Memorias" - $130</p>
+      </div>
+
+      <div class="carta-item">
+        <img src="sofi6.jpeg" alt="Carta 6">
+        <input type="checkbox" name="Carta 6" value="Carta 6 - $130">
+        <p>"Santuario de tintas y Susurros" - $160</p>
+      </div>
+    </div>
+
+    <button type="submit">Enviar Pedido</button>
+
+     <p id="mensaje-envio" style="display: none; color: #d6336c; text-align: center; font-weight: bold; margin-top: 20px;">
+       ✉️ Redirigiendo al resumen de tu pedido...
+     </p> 
+    
+    <!-- TOTAL DINÁMICO -->
+    <div id="total-pedido" style="text-align: center; font-weight: bold; margin-top: 20px;">
+      Total: $0
+    </div>
+    <a href="codigo.html" class="boton-regresar">⬅️ Regresar al inicio</a>
+
+  </form>
+  
+<script>
+// Función que actualiza el total y muestra frase motivacional
+function actualizarTotalYFrase() {
+  let total = 0;
+  let cantidad = 0;
+  const checkboxes = document.querySelectorAll('.carta-item input[type="checkbox"]');
+
+  checkboxes.forEach((checkbox) => {
+    if (checkbox.checked) {
+      cantidad++;
+      const precio = parseInt(checkbox.value.match(/\$(\d+)/)[1]);
+      total += precio;
+    }
+  });
+
+  document.getElementById('total-pedido').textContent = `Total: $${total}`;
+
+  // Frases motivadoras según cantidad
+  const frases = [
+    "💌 Elige una carta para comenzar 💌",
+    "¡Bien! Le encantará esta carta 😊",
+    "💖 Dos es mejor que una 💖",
+    "¡Estás armando algo muy especial!",
+    "¡Esto va a tocar corazones!",
+    "❤️ Una carta más y será perfecto",
+    "Estás regalando emociones 💫 y ¡tus elecciones son mágicas!"
+  ];
+
+  let frase;
+  if (cantidad === 0) {
+    frase = frases[0];
+  } else if (cantidad < frases.length) {
+    frase = frases[cantidad];
+  } else {
+    frase = "¡Tu pedido será inolvidable! ✨";
+  }
+
+  const fraseDiv = document.getElementById("frase-motivacional");
+  fraseDiv.textContent = frase;
+  fraseDiv.classList.add("visible");
+}
+
+// Escuchar cambios en los checkboxes
+const checks = document.querySelectorAll('.carta-item input[type="checkbox"]');
+checks.forEach((chk) => chk.addEventListener('change', actualizarTotalYFrase));
+
+// Ejecutar al cargar por si hay algo marcado
+actualizarTotalYFrase();
+
+// Al enviar el formulario
+document.querySelector("form").addEventListener("submit", function (e) {
+  const nombre = document.querySelector('input[name="Nombre del comprador"]').value;
+  const correo = document.querySelector('input[name="Correo del comprador"]').value;
+  const para = document.querySelector('input[name="Destinatario de la carta"]').value;
+
+  const checkboxes = document.querySelectorAll('.carta-item input[type="checkbox"]');
+  const cartasSeleccionadas = [];
+  let total = 0;
+
+  checkboxes.forEach((checkbox) => {
+    if (checkbox.checked) {
+      cartasSeleccionadas.push(checkbox.value);
+      const precio = parseInt(checkbox.value.match(/\$(\d+)/)[1]);
+      total += precio;
+    }
+  });
+
+  // 🛑 Verifica si no hay cartas seleccionadas
+  if (cartasSeleccionadas.length === 0) {
+    e.preventDefault(); // Detiene el envío
+    alert("⚠️ Debes seleccionar al menos una carta para enviar tu pedido.");
+    return;
+  }
+
+  // Guardar en localStorage
+  localStorage.setItem("nombre", nombre);
+  localStorage.setItem("destinatario", para);
+  localStorage.setItem("cartas", JSON.stringify(cartasSeleccionadas));
+  localStorage.setItem("total", `$${total}`);
+
+  // ✅ Mostrar mensaje de redirección
+  document.getElementById("mensaje-envio").style.display = "block";
+});
+</script>
+
+  
+  
+</body>
+</html>

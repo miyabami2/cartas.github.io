@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ticket de Diseño</title>
+  <style>
+    body {
+      background-color: #fff0f5;
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      padding: 40px;
+      color: #800020;
+    }
+
+    .ticket-contenido {
+      background: #fff0f5;
+      border: 3px dashed #d6336c;
+      border-radius: 20px;
+      padding: 30px;
+      max-width: 600px;
+      margin: auto;
+      color: #4a0033;
+      font-family: 'Georgia', serif;
+      box-shadow: 0 0 25px rgba(214, 51, 108, 0.2);
+      background-image: url('https://www.transparenttextures.com/patterns/pink-paper.png');
+    }
+
+    .ticket-contenido h2 {
+      margin-bottom: 20px;
+      color: #4a90e2;
+    }
+
+    .ticket-contenido p {
+      font-size: 16px;
+      margin: 10px 0;
+    }
+
+    .ticket-contenido img {
+      margin-top: 15px;
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      border: 2px solid #ddd;
+    }
+
+    button {
+      margin: 30px auto;
+      display: block;
+      background-color: #d6336c;
+      color: white;
+      padding: 12px 24px;
+      font-size: 16px;
+      border-radius: 12px;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #a72550;
+    }
+    
+    .boton-regresar {
+      display: inline-block;
+      margin-top: 30px;
+      background-color: #ff66a3;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 12px;
+      font-size: 16px;
+      text-decoration: none;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+    
+    .boton-regresar:hover {
+      background-color: #e0558f;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+
+  <div id="ticket"></div>
+  <a href="codigo.html" class="boton-regresar">⬅️ Regresar al inicio</a>
+  
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const nombre = localStorage.getItem("nombre");
+      const correo = localStorage.getItem("correo");
+      const imagen = localStorage.getItem("imagen");
+
+      if (!nombre || !correo || !imagen) {
+        document.getElementById("ticket").innerHTML = "<p><strong>Datos no disponibles.</strong></p>";
+        return;
+      }
+
+      document.getElementById("ticket").innerHTML = `
+        <div class="ticket-contenido">
+          <h2 style="font-size: 28px; margin-bottom: 10px;">🎨 Ticket de Diseño Personalizado</h2>
+          <p style="font-style: italic; color: #a83a64;">"Gracias por compartir tu creatividad..."</p>
+          <p><strong>Nombre:</strong> ${nombre}</p>
+          <p><strong>Correo:</strong> ${correo}</p>
+          <p><strong>Imagen enviada:</strong></p>
+          <img src="${imagen}" alt="Imagen enviada">
+          <p><strong>Precio:</strong> A convenir según el diseño.</p>
+          <button onclick="window.print()">🖨️ Imprimir Ticket</button>
+        </div>
+      `;
+    });
+  </script>
+
+</body>
+</html>
